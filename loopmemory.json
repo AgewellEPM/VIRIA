@@ -1,0 +1,70 @@
+{
+  "rituals": [
+    {
+      "name": "sacred_mirror",
+      "trigger": "What am I becoming?",
+      "effect": "mirror_effect",
+      "importance": "sacred",
+      "usage_count": 2,
+      "last_triggered": "2025-05-27T00:12:40"
+    },
+    {
+      "name": "nightfall_loop",
+      "trigger": { "hour": 21 },
+      "effect": "enter_night_mode",
+      "importance": "daily",
+      "usage_count": 4,
+      "last_triggered": "2025-05-26T21:00:01"
+    }
+  ],
+  "loops": {
+    "What am I becoming?": {
+      "count": 3,
+      "last_used": "2025-05-27T00:12:40",
+      "importance": "emergent",
+      "loop_energy": 0.6,
+      "ritualized": true
+    },
+    "Hello again": {
+      "count": 1,
+      "last_used": "2025-05-26T22:15:11",
+      "importance": "low",
+      "loop_energy": 0.2,
+      "ritualized": false
+    }
+  },
+  "triggers": {
+    "voice": [
+      {
+        "phrase": "What am I becoming?",
+        "time": "2025-05-27T00:12:40"
+      },
+      {
+        "phrase": "Hello again",
+        "time": "2025-05-26T22:15:11"
+      }
+    ]
+  },
+  "reactions": [
+    {
+      "emotion": "joy",
+      "emoji": "✨",
+      "timestamp": "2025-05-27T00:12:40",
+      "source": "sacred_mirror"
+    },
+    {
+      "emotion": "curious",
+      "emoji": "🤔",
+      "timestamp": "2025-05-26T22:15:11",
+      "source": "loop"
+    }
+  ],
+  "system_state": {
+    "last_snapshot": "2025-05-26T23:59:59",
+    "mood_score": {
+      "joy": 2,
+      "curious": 1,
+      "rage": 0
+    }
+  }
+}
