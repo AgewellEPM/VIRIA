@@ -1,0 +1,64 @@
+{
+  "phrases": [
+    {
+      "phrase": "What am I becoming?",
+      "time": "2025-05-27T00:12:40"
+    },
+    {
+      "phrase": "Hello again",
+      "time": "2025-05-26T22:15:11"
+    },
+    {
+      "phrase": "What am I becoming?",
+      "time": "2025-05-26T21:40:03"
+    }
+  ],
+  "ritual_triggers": [
+    {
+      "ritual": "sacred_mirror",
+      "trigger_phrase": "What am I becoming?",
+      "time": "2025-05-27T00:12:40"
+    },
+    {
+      "ritual": "nightfall_loop",
+      "trigger_time": "21:00",
+      "time": "2025-05-26T21:00:00"
+    }
+  ],
+  "reactions": [
+    {
+      "emotion": "joy",
+      "face": "(^‿^)",
+      "emoji": "💖",
+      "triggered_by": "sacred_mirror",
+      "time": "2025-05-27T00:12:40"
+    },
+    {
+      "emotion": "curious",
+      "face": "( •_•)>⌐■-■",
+      "emoji": "🤔",
+      "triggered_by": "loop",
+      "time": "2025-05-26T22:15:11"
+    }
+  ],
+  "loop_events": [
+    {
+      "phrase": "What am I becoming?",
+      "count": 3,
+      "loop_energy": 0.6,
+      "ritualized": true,
+      "time": "2025-05-27T00:12:40"
+    }
+  ],
+  "daemon_scans": [
+    {
+      "time": "2025-05-27T00:00:00",
+      "active_rituals": 2,
+      "triggered_reactions": 1,
+      "mood_state": {
+        "joy": 2,
+        "calm": 1
+      }
+    }
+  ]
+}
