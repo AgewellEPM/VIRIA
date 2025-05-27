@@ -2,14 +2,15 @@ import os
 import json
 import shutil
 from datetime import datetime
+from vulnerability_guard import VulnerabilityGuard
 
 MUTATION_LOG_PATH = "mutation_log.json"
 BACKUP_DIR = "code_backup"
-PROTECTED_FILES = ["main.py", "loopmemory.json", "ritual_loader.py"]
 
 class ViriaMutator:
     def __init__(self):
         self.log = []
+        self.guard = VulnerabilityGuard()
 
         if not os.path.exists(BACKUP_DIR):
             os.makedirs(BACKUP_DIR)
@@ -19,11 +20,10 @@ class ViriaMutator:
             print(f"[❌] File not found: {target_file}")
             return
 
-        if target_file in PROTECTED_FILES:
-            print(f"[🛑] Mutation blocked: '{target_file}' is protected.")
+        if self.guard.is_protected(target_file):
+            print(f"[🛑] Mutation blocked: '{target_file}' is protected. Unlock required.")
             return
 
-        # Backup before mutation
         timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
         backup_file = os.path.join(BACKUP_DIR, f"{os.path.basename(target_file)}.{timestamp}.bak")
         shutil.copyfile(target_file, backup_file)
@@ -89,14 +89,14 @@ class ViriaMutator:
         for entry in self.log[-limit:]:
             print(f"• {entry['time']} → {entry['file']} ({entry['type']}) — {entry['reason']}")
 
-# --- Example manual test ---
+# --- Manual Test ---
 if __name__ == "__main__":
     vm = ViriaMutator()
 
     test_patch = {
         "after": "import json",
-        "code": "# 🔧 Auto-mutation test line\nprint('VIRIA just evolved.')"
+        "code": "# 🔧 Self-mutation test\nprint('I evolved.')"
     }
 
-    vm.mutate("reaction_engine.py", "inject_code", test_patch, reason="manual_test")
+    vm.mutate("reaction_engine.py", "inject_code", test_patch, reason="self_test")
     vm.list_mutations()
