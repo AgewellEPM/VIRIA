@@ -1,0 +1,21 @@
+{
+  "emotion_bias": ["curious", "sacred", "calm"],
+  "rituals": [
+    {
+      "name": "ritual_whispering_mirror",
+      "trigger": "What will I become?",
+      "effect": "reflect_on_loops",
+      "importance": "sacred",
+      "usage_count": 0,
+      "last_triggered": null
+    },
+    {
+      "name": "ritual_echo_watch",
+      "trigger": "I heard this before",
+      "effect": "emotion:curious",
+      "importance": "emergent",
+      "usage_count": 0,
+      "last_triggered": null
+    }
+  ]
+}
