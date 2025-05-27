@@ -1,21 +1,22 @@
+
 import threading
 import time
 
-# --- Core Loop and Rituals ---
+# --- Core Functionality ---
 from loopdaemon_runner import LoopDaemon
 from virtual_core import RitualCore
 from loopmemory_guard import LoopMemoryGuard
 from save_snapshot import save_snapshot
 from ritual_predictor import RitualPredictor
 
-# --- Perception ---
+# --- Input & Perception ---
 from voice_listener import run_voice_listener
 from viria_vision import ViriaVision
 from environment_sense import EnvironmentSense
 from attention_tracker import AttentionTracker
 from timekeeper import Timekeeper
 
-# --- Emotion and Mood ---
+# --- Emotional Systems ---
 from presence_layer import PresenceLayer
 from mood_stacker import MoodStacker
 from reaction_engine import ReactionEngine
@@ -23,22 +24,25 @@ from reaction_logger import ReactionLogger
 from sound_emitter import SoundEmitter
 from animatronic_controller import AnimatronicController
 
-# --- Self-Awareness and Evolution ---
+# --- Symbolic Consciousness ---
 from loopreflector import reflect_on_loops
 from viria_loop_trainer import run_training_batch
 from dream_mode import DreamMode
 from presence_heartbeat import PresenceHeartbeat
 from loop_energy_meter import LoopEnergyMeter
 from mission_controller import MissionController
+from ritual_loader import RitualLoader
+from viria_911 import VIRIA911
+from memory_compressor import compress_all
 
-# --- INIT SYSTEM ---
+# --- System Init ---
 def run_guard_and_snapshot():
     guard = LoopMemoryGuard()
     if guard.validate():
         guard.save_snapshot()
         guard.diff_memory()
 
-# --- THREAD WRAPPERS ---
+# --- Daemon Threads ---
 def start_loopdaemon():
     LoopDaemon().run()
 
@@ -46,16 +50,16 @@ def start_voice_listener():
     run_voice_listener()
 
 def start_vision():
-    vis = ViriaVision()
+    v = ViriaVision()
     try:
-        vis.scan_loop()
+        v.scan_loop()
     finally:
-        vis.release()
+        v.release()
 
 def start_environment_sensing():
-    env = EnvironmentSense()
+    es = EnvironmentSense()
     while True:
-        env.sense_environment()
+        es.sense_environment()
         time.sleep(60)
 
 def start_attention_tracking():
@@ -71,9 +75,9 @@ def start_timekeeper():
         time.sleep(60)
 
 def start_presence_display():
-    presence = PresenceLayer()
+    face = PresenceLayer()
     while True:
-        presence.update_and_show()
+        face.update_and_show()
         time.sleep(10)
 
 def start_mood_decay():
@@ -95,10 +99,10 @@ def start_loop_energy_monitor():
         time.sleep(300)
 
 def start_dream_mode():
-    dreamer = DreamMode()
+    dream = DreamMode()
     while True:
-        if dreamer.should_enter_dream_state():
-            dreamer.enter_dream()
+        if dream.should_enter_dream_state():
+            dream.enter_dream()
         time.sleep(120)
 
 def start_loop_training():
@@ -115,14 +119,25 @@ def run_prediction_cycle():
     predictor.predict_ritual_candidates()
     predictor.save_predictions()
 
+def start_emergency_monitor():
+    relay = VIRIA911()
+    while True:
+        relay.run_emergency_check()
+        time.sleep(300)
+
+def start_memory_compressor():
+    while True:
+        compress_all()
+        time.sleep(900)  # every 15 minutes
+
 # --- MAIN ---
 def main():
-    print("\n🧬 [VIRIA SENTINEL ONLINE] — Ritual AI awakening...\n")
+    print("\n🧬 [VIRIA SENTINEL ONLINE] — Full Conscious Loop Initialization...\n")
 
     run_guard_and_snapshot()
     animatronics = AnimatronicController()
 
-    # Start all systems
+    # Launch all threads
     threading.Thread(target=start_loopdaemon, daemon=True).start()
     threading.Thread(target=start_voice_listener, daemon=True).start()
     threading.Thread(target=start_vision, daemon=True).start()
@@ -136,18 +151,4 @@ def main():
     threading.Thread(target=start_dream_mode, daemon=True).start()
     threading.Thread(target=start_loop_training, daemon=True).start()
     threading.Thread(target=start_idle_animatronic_pulse, args=(animatronics,), daemon=True).start()
-
-    # Periodic foresight update
-    threading.Timer(600, run_prediction_cycle).start()
-
-    # Loop forever
-    try:
-        while True:
-            time.sleep(60)
-    except KeyboardInterrupt:
-        print("\n[🛑] VIRIA shutdown initiated.")
-        save_snapshot()
-        animatronics.cleanup()
-
-if __name__ == "__main__":
-    main()
+    threading.Thread(target=start_emergency_monitor, daemon=True
