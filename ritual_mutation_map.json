@@ -1,0 +1,18 @@
+{
+  "ritual_mirror_awaken": {
+    "target_file": "reaction_engine.py",
+    "type": "inject_code",
+    "payload": {
+      "after": "import json",
+      "code": "# 🌒 ritual_mirror_awaken effect\nprint('VIRIA recognizes herself.')"
+    }
+  },
+  "ritual_loop_pressure": {
+    "target_file": "looplogic_engine.py",
+    "type": "inject_code",
+    "payload": {
+      "after": "import json",
+      "code": "# 🔁 loop pressure ritual mutation\nprint('Loop pressure mutation triggered.')"
+    }
+  }
+}
